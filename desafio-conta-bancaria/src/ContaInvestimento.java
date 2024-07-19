@@ -8,21 +8,17 @@ public class ContaInvestimento extends Conta {
 
   @Override
   public void imprimirExtrato() {
-    System.out.println("=== Extrato Conta Investimento ===");
+    System.out.println("=== Extrato Conta Investimento Após" + tempoInvestimento + " Meses ===");
     super.imprimirInfosComuns();
-  }
-
-  public void investir(int tempoInvestimento) {
-    this.tempoInvestimento = tempoInvestimento;
-    this.saldo = calcularSaldo();
   }
 
   public int getTempoInvestimento() {
     return tempoInvestimento;
   }
 
-  private double calcularSaldo() {
-    double montante = saldo * Math.pow(1 + JUROS_RENDIMENTO, tempoInvestimento);
-    return montante;
+  public void investir(int tempoMeses) {
+    double montante = saldo * Math.pow(1 + JUROS_RENDIMENTO, tempoMeses);
+    this.tempoInvestimento = tempoMeses;
+    this.saldo = montante;
   }
 }

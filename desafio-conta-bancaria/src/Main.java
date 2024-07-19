@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -9,17 +12,16 @@ public class Main {
 		Conta poupanca = new ContaPoupanca(fulano);
 		ContaInvestimento investimento = new ContaInvestimento(fulano);
 
-		corrente.depositar(1000);
-		corrente.transferir(150, poupanca);
-		corrente.transferir(600, investimento);
-
-		corrente.imprimirExtrato();
-		poupanca.imprimirExtrato();
-		investimento.imprimirExtrato();
-
+		corrente.depositar(2000);
+		corrente.transferir(230, poupanca);
+		corrente.transferir(680, investimento);
 		investimento.investir(7);
-		System.out.println("====== Após " + investimento.getTempoInvestimento() + " meses =====");
-		investimento.imprimirExtrato();
+
+		Banco bancoN = new Banco();
+		bancoN.setNome("Banco N");
+		bancoN.setContas(Arrays.asList(corrente, poupanca, investimento));
+		bancoN.getContas().forEach(Conta::imprimirExtrato);
+		;
 	}
 
 }
